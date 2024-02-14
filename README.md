@@ -13,7 +13,7 @@ Usage
 
 To use the password generator, follow these steps:
 
-Open the <a href="https://zutaree.github.io/password-generator/">Password Generator </a> in your web browser.
+Open the [Password Generator](https://zutaree.github.io/password-generator/) in your web browser.
 Enter the desired length of the password (between 8 and 128 characters) and click "OK".
 Select the character types you want to include in the password (special characters, numeric characters, lowercase characters, uppercase characters).
 Click the "Generate Password" button.
