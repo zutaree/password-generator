@@ -88,19 +88,48 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-// Function to prompt user for password options
-function getPasswordOptions() {
-
-}
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-
-}
-
-// Function to generate password with user input
+// Function to prompt user for password options and generate password
 function generatePassword() {
+  var passwordLength = parseInt(prompt("Enter the length of the password (8-128 characters):"));
 
+  // Validate password length
+  if (isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128) {
+    alert("Password length must be a number between 8 and 128.");
+    return "";
+  }
+
+  var includeSpecialCharacters = confirm("Include special characters?");
+  var includeNumericCharacters = confirm("Include numeric characters?");
+  var includeLowerCasedCharacters = confirm("Include lowercase characters?");
+  var includeUpperCasedCharacters = confirm("Include uppercase characters?");
+
+  // Validate at least one character type is selected
+  if (!(includeSpecialCharacters || includeNumericCharacters || includeLowerCasedCharacters || includeUpperCasedCharacters)) {
+    alert("At least one character type must be selected.");
+    return "";
+  }
+
+  var possibleCharacters = [];
+  if (includeSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
+  }
+  if (includeNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
+  }
+  if (includeLowerCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCasedCharacters);
+  }
+  if (includeUpperCasedCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCasedCharacters);
+  }
+
+  var password = "";
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * possibleCharacters.length);
+    password += possibleCharacters[randomIndex];
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
